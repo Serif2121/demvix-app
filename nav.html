@@ -1,20 +1,24 @@
-<!DOCTYPE html>
-<html lang="tr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        .bottom-nav { position: fixed; bottom: 0; left: 0; width: 100%; background: #1e293b; display: flex; justify-content: space-around; padding: 12px 0; border-top: 1px solid #334155; }
-        .nav-item { color: #94a3b8; text-decoration: none; font-size: 14px; font-weight: bold; }
-        .nav-item:hover, .nav-item.active { color: #38bdf8; }
-    </style>
-</head>
-<body>
-    <div class="bottom-nav">
-        <a href="feed.html" class="nav-item">Akış</a>
-        <a href="market.html" class="nav-item">Pazar</a>
-        <a href="wallet.html" class="nav-item">Cüzdan</a>
-        <a href="index.html" class="nav-item">Profil</a>
-    </div>
-</body>
-</html>
+<!-- Ortak Alt Menü Bileşeni -->
+<div class="bottom-nav">
+    <a href="feed.html" class="nav-item">
+        <span>🏠</span> Akış
+    </a>
+    <a href="market.html" class="nav-item">
+        <span>🛒</span> Pazar
+    </a>
+    <button class="nav-center-btn" onclick="openModal ? openModal() : window.location.href='feed.html'">+</button>
+    <a href="wallet.html" class="nav-item">
+        <span>👛</span> Cüzdan
+    </a>
+    <a href="index.html" class="nav-item">
+        <span>👤</span> Profil
+    </a>
+</div>
+
+<style>
+    .bottom-nav { position: fixed; bottom: 0; left: 0; width: 100%; background: rgba(21, 15, 36, 0.95); backdrop-filter: blur(15px); display: flex; justify-content: space-around; align-items: center; padding: 12px 10px; border-top: 1px solid rgba(168, 85, 247, 0.15); z-index: 50; }
+    .nav-item { color: #9ca3af; text-decoration: none; font-size: 12px; font-weight: 600; display: flex; flex-direction: column; align-items: center; gap: 4px; transition: color 0.2s; }
+    .nav-item.active, .nav-item:hover { color: #c084fc; }
+    .nav-center-btn { background: linear-gradient(135deg, #c084fc, #9333ea); color: white; border: none; width: 52px; height: 52px; border-radius: 50%; font-size: 28px; font-weight: bold; display: flex; justify-content: center; align-items: center; cursor: pointer; box-shadow: 0 6px 20px rgba(168, 85, 247, 0.5); margin-top: -15px; transition: transform 0.2s; }
+    .nav-center-btn:active { transform: scale(0.92); }
+</style>
