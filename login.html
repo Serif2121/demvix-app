@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DEMVIX - Giriş Yap</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { background: linear-gradient(135deg, #0b0713 0%, #150f24 100%); color: #ffffff; font-family: sans-serif; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 20px; }
+        
+        .login-container { width: 100%; max-width: 380px; background: rgba(30, 24, 48, 0.7); border: 1px solid rgba(168, 85, 247, 0.25); border-radius: 28px; padding: 30px; box-shadow: 0 20px 40px rgba(0,0,0,0.6); backdrop-filter: blur(10px); text-align: center; }
+        
+        .logo-circle { width: 70px; height: 70px; border-radius: 50%; background: linear-gradient(135deg, #a855f7, #ec4899); margin: 0 auto 20px; display: flex; align-items: center; justify-content: center; font-size: 30px; font-weight: bold; box-shadow: 0 0 20px rgba(168, 85, 247, 0.5); }
+        .app-title { font-size: 24px; font-weight: 800; margin-bottom: 8px; background: linear-gradient(90deg, #c084fc, #e879f9); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .app-subtitle { font-size: 13px; color: #9ca3af; margin-bottom: 30px; }
+        
+        .input-group { margin-bottom: 16px; text-align: left; }
+        .input-label { font-size: 12px; color: #d8b4fe; margin-bottom: 6px; display: block; font-weight: 600; }
+        .input-field { width: 100%; background: #0b0713; border: 1px solid rgba(168, 85, 247, 0.3); border-radius: 14px; padding: 14px; color: white; font-size: 14px; outline: none; transition: border-color 0.2s; }
+        .input-field:focus { border-color: #c084fc; box-shadow: 0 0 10px rgba(192, 132, 252, 0.2); }
+        
+        .login-btn { width: 100%; background: linear-gradient(135deg, #a855f7, #9333ea); color: white; border: none; padding: 14px; border-radius: 14px; font-weight: 700; font-size: 15px; cursor: pointer; margin-top: 10px; box-shadow: 0 4px 15px rgba(168, 85, 247, 0.4); transition: transform 0.2s; }
+        .login-btn:active { transform: scale(0.98); }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="logo-circle">D</div>
+        <div class="app-title">DEMVIX</div>
+        <div class="app-subtitle">Küresel Sosyal Ağ ve Ticaret Platformu</div>
+        
+        <div class="input-group">
+            <label class="input-label">Kullanıcı Adı veya E-posta</label>
+            <input type="text" class="input-field" placeholder="Adınızı girin">
+        </div>
+        
+        <div class="input-group">
+            <label class="input-label">Şifre</label>
+            <input type="password" class="input-field" placeholder="••••••••">
+        </div>
+        
+        <button class="login-btn" onclick="window.location.href='feed.html'">Giriş Yap</button>
+    </div>
+</body>
+</html>
