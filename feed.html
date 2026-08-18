@@ -132,52 +132,32 @@
         </div>
     </div>
 
-    <!-- Alt Menü -->
-    <div class="bottom-nav">
-        <a href="feed.html" class="nav-item active">
-            <span>🏠</span> Akış
-        </a>
-        <a href="market.html" class="nav-item">
-            <span>🛒</span> Pazar
-        </a>
-        <button class="nav-center-btn" onclick="openModal()">+</button>
-        <a href="wallet.html" class="nav-item">
-            <span>👛</span> Cüzdan
-        </a>
-        <a href="index.html" class="nav-item">
-            <span>👤</span> Profil
-        </a>
-    </div>
+        <!-- Alt Menü Yapısı -->
+<div class="bottom-nav">
+    <a href="feed.html" class="nav-item">🏠 Akış</a>
+    <a href="market.html" class="nav-item">🛒 Pazar</a>
+    <button class="nav-center-btn" onclick="alert('Paylaşım ekranı açılıyor...')">+</button>
+    <a href="chat.html" class="nav-item">💬 Sohbet</a>
+    <a href="index.html" class="nav-item">👤 Profil</a>
+</div>
 
-    <script>
-        function openModal() { document.getElementById('postModal').style.display = 'flex'; }
-        function closeModal() { document.getElementById('postModal').style.display = 'none'; }
-        function submitPost() {
-            const text = document.getElementById('postText').value;
-            if(text.trim() !== "") {
-                const feedList = document.getElementById('feedList');
-                const newCard = document.createElement('div');
-                newCard.className = 'post-card';
-                newCard.innerHTML = `
-                    <div class="post-header">
-                        <div class="author-info">
-                            <div class="avatar" style="background: linear-gradient(135deg, #3b82f6, #8b5cf6);">ŞG</div>
-                            <div>
-                                <div class="post-author">Şerif Gökdemir</div>
-                                <div class="post-time">Az önce</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="post-content">${text}</div>
-                    <div class="post-actions">
-                        <button class="action-btn">❤️ 1</button>
-                        <button class="action-btn">💬 0</button>
-                    </div>`;
-                feedList.prepend(newCard);
-                document.getElementById('postText').value = '';
-                closeModal();
-            }
-        }
-    </script>
-</body>
-</html>
+<style>
+    .bottom-nav { 
+        position: fixed; bottom: 0; left: 0; width: 100%; height: 65px; 
+        background: rgba(21, 15, 36, 0.98); backdrop-filter: blur(20px); 
+        display: flex; justify-content: space-around; align-items: center; 
+        border-top: 1px solid rgba(168, 85, 247, 0.2); z-index: 999; 
+    }
+    .nav-item { 
+        color: #9ca3af; text-decoration: none; font-size: 10px; 
+        display: flex; flex-direction: column; align-items: center; 
+        gap: 4px; font-weight: 600; transition: 0.3s;
+    }
+    .nav-item:hover { color: #c084fc; }
+    .nav-center-btn { 
+        background: linear-gradient(135deg, #c084fc, #9333ea); 
+        color: white; width: 50px; height: 50px; border-radius: 50%; 
+        border: none; font-size: 24px; font-weight: bold; cursor: pointer; 
+        box-shadow: 0 4px 15px rgba(168, 85, 247, 0.4); margin-bottom: 25px; 
+    }
+</style>
