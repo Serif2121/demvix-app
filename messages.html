@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Sohbet Detay</title>
+    <style>
+        body { background: #0b0713; color: white; display: flex; flex-direction: column; height: 100vh; }
+        .chat-header { padding: 15px; border-bottom: 1px solid #333; display: flex; justify-content: space-between; align-items: center; }
+        .msg-area { flex: 1; padding: 20px; }
+        .input-area { padding: 15px; background: #1a1625; display: flex; gap: 10px; align-items: center; }
+        .input-area input { flex: 1; padding: 10px; background: transparent; border: none; color: white; }
+        .icons { font-size: 20px; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <div class="chat-header">
+        <span>Kullanıcı Adı</span>
+        <div>📞 📹</div> <!-- Sesli/Görüntülü Arama -->
+    </div>
+    <div class="msg-area">Mesajlar burada görünecek...</div>
+    <div class="input-area">
+        <span class="icons">😊</span> <!-- Emoji -->
+        <span class="icons">📍</span> <!-- Konum -->
+        <span class="icons">🎤</span> <!-- Ses -->
+        <input type="text" placeholder="Mesaj yaz...">
+        <span class="icons">📷</span> <!-- Görsel/Video -->
+    </div>
+</body>
+</html>
