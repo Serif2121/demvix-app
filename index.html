@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="tr">
 <head>
@@ -5,13 +6,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DEMVIX - Sosyal Ağ ve Ticaret Platformu</title>
     <style>
-        body { background-color: #0f172a; color: white; font-family: Arial, sans-serif; text-align: center; padding-top: 50px; }
+        body { background-color: #0f172a; color: white; font-family: Arial, sans-serif; text-align: center; padding-top: 50px; margin: 0; padding-bottom: 80px; }
         h1 { color: #38bdf8; }
         p { color: #94a3b8; }
+        .bottom-nav { position: fixed; bottom: 0; left: 0; width: 100%; background: #1e293b; display: flex; justify-content: space-around; padding: 12px 0; border-top: 1px solid #334155; }
+        .nav-item { color: #94a3b8; text-decoration: none; font-size: 14px; font-weight: bold; }
+        .nav-item:hover, .nav-item.active { color: #38bdf8; }
     </style>
 </head>
 <body>
     <h1>DEMVIX'e Hoş Geldiniz</h1>
     <p>Küresel Sosyal Ağ, Pazar Yeri ve Cüzdan Ekosistemi</p>
+
+    <div class="bottom-nav">
+        <a href="feed.html" class="nav-item">Akış</a>
+        <a href="market.html" class="nav-item">Pazar</a>
+        <a href="wallet.html" class="nav-item">Cüzdan</a>
+        <a href="index.html" class="nav-item active">Profil</a>
+    </div>
 </body>
 </html>
