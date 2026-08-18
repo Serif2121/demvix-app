@@ -5,35 +5,66 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DEMVIX - Cüzdan</title>
     <style>
-        body { background-color: #0f172a; color: white; font-family: Arial, sans-serif; margin: 0; padding: 0; text-align: center; padding-bottom: 80px; }
-        .header { background: #1e293b; padding: 15px; font-size: 18px; font-weight: bold; color: #38bdf8; border-bottom: 1px solid #334155; }
-        .wallet-card { background: linear-gradient(135deg, #1e293b, #334155); margin: 20px auto; width: 90%; max-width: 400px; border-radius: 16px; padding: 25px; box-shadow: 0 4px 10px rgba(0,0,0,0.4); text-align: center; }
-        .balance-title { color: #94a3b8; font-size: 14px; margin-bottom: 5px; }
-        .balance-amount { font-size: 28px; font-weight: bold; color: #ffffff; margin-bottom: 20px; }
-        .btn-group { display: flex; gap: 10px; justify-content: center; }
-        .btn { background: #38bdf8; color: #0f172a; border: none; padding: 10px 20px; font-weight: bold; border-radius: 8px; cursor: pointer; }
-        .bottom-nav { position: fixed; bottom: 0; left: 0; width: 100%; background: #1e293b; display: flex; justify-content: space-around; padding: 12px 0; border-top: 1px solid #334155; }
-        .nav-item { color: #94a3b8; text-decoration: none; font-size: 14px; font-weight: bold; }
-        .nav-item:hover, .nav-item.active { color: #38bdf8; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { background: linear-gradient(135deg, #0b0713 0%, #150f24 100%); color: #ffffff; font-family: sans-serif; padding-bottom: 100px; min-height: 100vh; }
+        
+        .header { padding: 20px; font-size: 18px; font-weight: 700; border-bottom: 1px solid rgba(168, 85, 247, 0.2); }
+        
+        /* Cüzdan Kartı */
+        .wallet-card { background: linear-gradient(135deg, #4c1d95, #7e22ce); margin: 20px; padding: 25px; border-radius: 24px; text-align: center; box-shadow: 0 10px 30px rgba(126, 34, 206, 0.3); border: 1px solid rgba(255,255,255,0.1); }
+        .balance-label { color: #d8b4fe; font-size: 13px; margin-bottom: 8px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
+        .balance-amount { font-size: 36px; font-weight: 800; margin-bottom: 20px; }
+        
+        .wallet-actions { display: flex; gap: 10px; justify-content: center; }
+        .action-btn { background: rgba(255, 255, 255, 0.15); border: none; color: white; padding: 10px 20px; border-radius: 12px; font-weight: 600; font-size: 13px; cursor: pointer; backdrop-filter: blur(5px); }
+        .action-btn.primary { background: #ffffff; color: #7e22ce; }
+
+        /* İşlem Geçmişi */
+        .transactions { padding: 0 20px; }
+        .section-title { font-size: 15px; color: #9ca3af; margin-bottom: 12px; font-weight: 600; }
+        .tx-item { background: rgba(30, 24, 48, 0.6); padding: 14px 16px; border-radius: 16px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; border: 1px solid rgba(168, 85, 247, 0.15); }
+        .tx-info div { font-weight: 600; font-size: 14px; }
+        .tx-info span { font-size: 11px; color: #9ca3af; }
+        .tx-amount { font-weight: 700; color: #10b981; font-size: 14px; }
+
+        /* Alt Menü */
+        .bottom-nav { position: fixed; bottom: 0; left: 0; width: 100%; background: rgba(21, 15, 36, 0.95); backdrop-filter: blur(15px); display: flex; justify-content: space-around; align-items: center; padding: 12px 10px; border-top: 1px solid rgba(168, 85, 247, 0.15); z-index: 50; }
+        .nav-item { color: #9ca3af; text-decoration: none; font-size: 12px; display: flex; flex-direction: column; align-items: center; gap: 4px; font-weight: 600; }
+        .nav-item.active { color: #c084fc; }
+        .nav-center-btn { background: linear-gradient(135deg, #c084fc, #9333ea); color: white; width: 52px; height: 52px; border-radius: 50%; display: flex; justify-content: center; align-items: center; cursor: pointer; margin-top: -15px; box-shadow: 0 6px 20px rgba(168, 85, 247, 0.5); font-size: 28px; font-weight: bold; border: none; }
     </style>
 </head>
 <body>
-    <div class="header">DEMVIX Cüzdan</div>
+    <div class="header">Cüzdan</div>
 
     <div class="wallet-card">
-        <div class="balance-title">Toplam Varlık / Jeton</div>
-        <div class="balance-amount">12,500 DMX</div>
-        <div class="btn-group">
-            <button class="btn">Gönder</button>
-            <button class="btn">Al</button>
+        <div class="balance-label">Toplam DMX Bakiyesi</div>
+        <div class="balance-amount">12,450.00 DMX</div>
+        <div class="wallet-actions">
+            <button class="action-btn primary">Gönder</button>
+            <button class="action-btn">Al</button>
         </div>
     </div>
 
+    <div class="transactions">
+        <div class="section-title">İşlem Geçmişi</div>
+        <div class="tx-item">
+            <div class="tx-info"><div>Pazar Satışı</div><span>Bugün</span></div>
+            <div class="tx-amount">+ 250.00 DMX</div>
+        </div>
+        <div class="tx-item">
+            <div class="tx-info"><div>Günlük Ödül</div><span>Dün</span></div>
+            <div class="tx-amount">+ 50.00 DMX</div>
+        </div>
+    </div>
+
+    <!-- Alt Menü -->
     <div class="bottom-nav">
-        <a href="feed.html" class="nav-item">Akış</a>
-        <a href="market.html" class="nav-item">Pazar</a>
-        <a href="wallet.html" class="nav-item active">Cüzdan</a>
-        <a href="index.html" class="nav-item">Profil</a>
+        <a href="feed.html" class="nav-item">🏠 Akış</a>
+        <a href="market.html" class="nav-item">🛒 Pazar</a>
+        <button class="nav-center-btn" onclick="window.location.href='feed.html'">+</button>
+        <a href="wallet.html" class="nav-item active">👛 Cüzdan</a>
+        <a href="index.html" class="nav-item">👤 Profil</a>
     </div>
 </body>
 </html>
