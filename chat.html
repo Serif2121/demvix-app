@@ -2,52 +2,35 @@
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DEMVIX - Sohbet</title>
     <style>
-        body { background: #0b0713; color: white; font-family: sans-serif; padding-bottom: 80px; }
-        .header { padding: 20px; font-weight: 700; border-bottom: 1px solid #333; }
-        .search-bar { padding: 15px; }
-        .search-input { width: 100%; padding: 12px; border-radius: 12px; border: none; background: #1a1625; color: white; }
-        /* Yeni Sohbet Başlat Butonu */
-        .new-chat-btn { position: fixed; bottom: 80px; right: 20px; width: 60px; height: 60px; background: #9333ea; border-radius: 50%; font-size: 30px; display: flex; align-items: center; justify-content: center; border: none; color: white; box-shadow: 0 4px 15px rgba(147, 51, 234, 0.5); }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { background: #0b0713; color: white; font-family: sans-serif; min-height: 100vh; padding-bottom: 80px; }
+        .header { padding: 20px; font-size: 18px; font-weight: 700; border-bottom: 1px solid rgba(168, 85, 247, 0.2); }
+        .search-container { padding: 15px 20px; }
+        .search-input { width: 100%; padding: 14px; border-radius: 14px; border: 1px solid rgba(168, 85, 247, 0.3); background: #1a1625; color: white; font-size: 14px; }
+        
+        /* Alt Menü (Tüm sayfalarda aynı) */
+        .bottom-nav { position: fixed; bottom: 0; left: 0; width: 100%; height: 65px; background: rgba(21, 15, 36, 0.98); backdrop-filter: blur(20px); display: flex; justify-content: space-around; align-items: center; border-top: 1px solid rgba(168, 85, 247, 0.2); z-index: 999; }
+        .nav-item { color: #9ca3af; text-decoration: none; font-size: 10px; display: flex; flex-direction: column; align-items: center; gap: 4px; font-weight: 600; }
+        .nav-item.active { color: #c084fc; }
+        .nav-center-btn { background: linear-gradient(135deg, #c084fc, #9333ea); color: white; width: 50px; height: 50px; border-radius: 50%; border: none; font-size: 24px; font-weight: bold; cursor: pointer; box-shadow: 0 4px 15px rgba(168, 85, 247, 0.4); margin-bottom: 25px; }
     </style>
 </head>
 <body>
     <div class="header">Sohbetler</div>
-    <div class="search-bar">
+    <div class="search-container">
         <input type="text" class="search-input" placeholder="Kullanıcı ara...">
     </div>
-    
-    <!-- Sohbet Başlatma Butonu -->
-    <button class="new-chat-btn" onclick="window.location.href='messages.html'">+</button>
 
-    
-<!-- Alt Menü Yapısı -->
-<div class="bottom-nav">
-    <a href="feed.html" class="nav-item">🏠 Akış</a>
-    <a href="market.html" class="nav-item">🛒 Pazar</a>
-    <button class="nav-center-btn" onclick="alert('Paylaşım ekranı açılıyor...')">+</button>
-    <a href="chat.html" class="nav-item">💬 Sohbet</a>
-    <a href="index.html" class="nav-item">👤 Profil</a>
-</div>
-
-<style>
-    .bottom-nav { 
-        position: fixed; bottom: 0; left: 0; width: 100%; height: 65px; 
-        background: rgba(21, 15, 36, 0.98); backdrop-filter: blur(20px); 
-        display: flex; justify-content: space-around; align-items: center; 
-        border-top: 1px solid rgba(168, 85, 247, 0.2); z-index: 999; 
-    }
-    .nav-item { 
-        color: #9ca3af; text-decoration: none; font-size: 10px; 
-        display: flex; flex-direction: column; align-items: center; 
-        gap: 4px; font-weight: 600; transition: 0.3s;
-    }
-    .nav-item:hover { color: #c084fc; }
-    .nav-center-btn { 
-        background: linear-gradient(135deg, #c084fc, #9333ea); 
-        color: white; width: 50px; height: 50px; border-radius: 50%; 
-        border: none; font-size: 24px; font-weight: bold; cursor: pointer; 
-        box-shadow: 0 4px 15px rgba(168, 85, 247, 0.4); margin-bottom: 25px; 
-    }
-</style>
+    <!-- Alt Menü -->
+    <div class="bottom-nav">
+        <a href="feed.html" class="nav-item">🏠 Akış</a>
+        <a href="market.html" class="nav-item">🛒 Pazar</a>
+        <button class="nav-center-btn" onclick="alert('Paylaşım ekranı açılıyor...')">+</button>
+        <a href="chat.html" class="nav-item active">💬 Sohbet</a>
+        <a href="index.html" class="nav-item">👤 Profil</a>
+    </div>
+</body>
+</html>
