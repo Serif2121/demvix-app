@@ -50,13 +50,32 @@
         <div class="menu-item">💳 Ödeme Yöntemleri</div>
     </div>
 
-    <!-- Alt Menü -->
-    <div class="bottom-nav">
-        <a href="feed.html" class="nav-item">🏠 Akış</a>
-        <a href="market.html" class="nav-item">🛒 Pazar</a>
-        <div class="nav-center-btn">+</div>
-        <a href="wallet.html" class="nav-item">👛 Cüzdan</a>
-        <a href="index.html" class="nav-item active">👤 Profil</a>
-    </div>
-</body>
-</html>
+    <!-- Alt Menü Yapısı -->
+<div class="bottom-nav">
+    <a href="feed.html" class="nav-item">🏠 Akış</a>
+    <a href="market.html" class="nav-item">🛒 Pazar</a>
+    <button class="nav-center-btn" onclick="alert('Paylaşım ekranı açılıyor...')">+</button>
+    <a href="chat.html" class="nav-item">💬 Sohbet</a>
+    <a href="index.html" class="nav-item">👤 Profil</a>
+</div>
+
+<style>
+    .bottom-nav { 
+        position: fixed; bottom: 0; left: 0; width: 100%; height: 65px; 
+        background: rgba(21, 15, 36, 0.98); backdrop-filter: blur(20px); 
+        display: flex; justify-content: space-around; align-items: center; 
+        border-top: 1px solid rgba(168, 85, 247, 0.2); z-index: 999; 
+    }
+    .nav-item { 
+        color: #9ca3af; text-decoration: none; font-size: 10px; 
+        display: flex; flex-direction: column; align-items: center; 
+        gap: 4px; font-weight: 600; transition: 0.3s;
+    }
+    .nav-item:hover { color: #c084fc; }
+    .nav-center-btn { 
+        background: linear-gradient(135deg, #c084fc, #9333ea); 
+        color: white; width: 50px; height: 50px; border-radius: 50%; 
+        border: none; font-size: 24px; font-weight: bold; cursor: pointer; 
+        box-shadow: 0 4px 15px rgba(168, 85, 247, 0.4); margin-bottom: 25px; 
+    }
+</style>
