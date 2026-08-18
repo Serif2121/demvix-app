@@ -3,43 +3,149 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DEMVIX - Pazar</title>
+    <title>DEMVIX - Pazar Yeri</title>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { background: linear-gradient(135deg, #0b0713 0%, #150f24 100%); color: #ffffff; font-family: sans-serif; padding-bottom: 100px; min-height: 100vh; }
+        body { background: linear-gradient(135deg, #0b0713 0%, #150f24 100%); color: #ffffff; font-family: sans-serif; padding-bottom: 110px; min-height: 100vh; }
         
-        .header { padding: 20px; font-size: 20px; font-weight: 700; border-bottom: 1px solid rgba(168, 85, 247, 0.2); }
+        .header { padding: 20px; font-size: 18px; font-weight: 700; border-bottom: 1px solid rgba(168, 85, 247, 0.2); display: flex; justify-content: space-between; align-items: center; }
         
-        /* Pazar Kartları */
+        /* Arama Alanı */
+        .search-container { padding: 15px 20px 5px; }
+        .search-input { width: 100%; background: rgba(30, 24, 48, 0.8); border: 1px solid rgba(168, 85, 247, 0.3); border-radius: 14px; padding: 12px 16px; color: white; font-size: 14px; outline: none; }
+        .search-input:focus { border-color: #c084fc; box-shadow: 0 0 10px rgba(192, 132, 252, 0.2); }
+
+        /* Ürün Listesi Izgarası */
         .market-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; padding: 20px; }
-        .product-card { background: rgba(30, 24, 48, 0.6); border: 1px solid rgba(168, 85, 247, 0.2); border-radius: 20px; padding: 15px; text-align: center; }
-        .product-img { width: 100%; height: 120px; background: rgba(255,255,255,0.05); border-radius: 12px; margin-bottom: 10px; display: flex; align-items: center; justify-content: center; font-size: 40px; }
-        .product-name { font-weight: 600; font-size: 14px; margin-bottom: 5px; }
-        .product-price { color: #c084fc; font-weight: 700; font-size: 15px; }
-        .buy-btn { background: #7e22ce; border: none; color: white; padding: 8px 16px; border-radius: 10px; margin-top: 10px; width: 100%; font-weight: 600; cursor: pointer; }
+        .product-card { background: rgba(30, 24, 48, 0.6); border: 1px solid rgba(168, 85, 247, 0.2); border-radius: 20px; padding: 12px; text-align: left; position: relative; }
+        .product-img { width: 100%; height: 110px; background: rgba(255,255,255,0.05); border-radius: 12px; margin-bottom: 10px; display: flex; align-items: center; justify-content: center; font-size: 30px; }
+        .product-name { font-weight: 600; font-size: 13px; margin-bottom: 4px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .product-seller { font-size: 11px; color: #9ca3af; margin-bottom: 8px; }
+        .product-footer { display: flex; justify-content: space-between; align-items: center; margin-top: 8px; }
+        .product-price { color: #c084fc; font-weight: 700; font-size: 13px; }
+        .buy-btn { background: #7e22ce; border: none; color: white; padding: 6px 12px; border-radius: 8px; font-weight: 600; font-size: 11px; cursor: pointer; }
+
+        /* Sabit Alt Ürün Sat Butonu */
+        .bottom-sell-bar { position: fixed; bottom: 75px; left: 0; width: 100%; padding: 0 20px; z-index: 40; }
+        .sell-action-btn { width: 100%; background: linear-gradient(135deg, #a855f7, #9333ea); color: white; border: none; padding: 14px; border-radius: 16px; font-weight: 700; font-size: 14px; cursor: pointer; box-shadow: 0 4px 20px rgba(168, 85, 247, 0.5); text-align: center; }
+
+        /* Ürün Ekleme Modalı */
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(11, 7, 19, 0.9); z-index: 100; justify-content: center; align-items: flex-end; }
+        .modal-content { background: #150f24; width: 100%; max-height: 90vh; border-top-left-radius: 28px; border-top-right-radius: 28px; padding: 25px 20px; overflow-y: auto; border-top: 1px solid rgba(168, 85, 247, 0.3); }
+        .modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; font-size: 16px; font-weight: 700; }
+        .close-modal { background: none; border: none; color: #9ca3af; font-size: 20px; cursor: pointer; }
+        
+        .form-group { margin-bottom: 15px; }
+        .form-label { font-size: 12px; color: #d8b4fe; margin-bottom: 6px; display: block; font-weight: 600; }
+        .form-input, .form-select, .form-textarea { width: 100%; background: #0b0713; border: 1px solid rgba(168, 85, 247, 0.3); border-radius: 12px; padding: 12px; color: white; font-size: 13px; outline: none; }
+        .form-textarea { resize: vertical; height: 80px; }
+        
+        .photo-upload-box { border: 2px dashed rgba(168, 85, 247, 0.4); border-radius: 12px; padding: 20px; text-align: center; color: #9ca3af; font-size: 12px; cursor: pointer; background: rgba(30, 24, 48, 0.4); }
+        
+        .boost-section { background: rgba(30, 24, 48, 0.5); border: 1px solid rgba(168, 85, 247, 0.3); border-radius: 12px; padding: 12px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+        .boost-info div { font-weight: 600; font-size: 13px; }
+        .boost-info span { font-size: 11px; color: #c084fc; }
+        
+        .submit-listing-btn { width: 100%; background: linear-gradient(135deg, #a855f7, #9333ea); color: white; border: none; padding: 14px; border-radius: 14px; font-weight: 700; font-size: 14px; cursor: pointer; box-shadow: 0 4px 15px rgba(168, 85, 247, 0.4); }
 
         /* Alt Menü */
         .bottom-nav { position: fixed; bottom: 0; left: 0; width: 100%; background: rgba(21, 15, 36, 0.95); backdrop-filter: blur(15px); display: flex; justify-content: space-around; align-items: center; padding: 12px 10px; border-top: 1px solid rgba(168, 85, 247, 0.15); z-index: 50; }
-        .nav-item { color: #9ca3af; text-decoration: none; font-size: 12px; display: flex; flex-direction: column; align-items: center; gap: 4px; }
+        .nav-item { color: #9ca3af; text-decoration: none; font-size: 12px; display: flex; flex-direction: column; align-items: center; gap: 4px; font-weight: 600; }
         .nav-item.active { color: #c084fc; }
-        .nav-center-btn { background: linear-gradient(135deg, #c084fc, #9333ea); color: white; width: 52px; height: 52px; border-radius: 50%; display: flex; justify-content: center; align-items: center; cursor: pointer; margin-top: -15px; box-shadow: 0 6px 20px rgba(168, 85, 247, 0.5); }
+        .nav-center-btn { background: linear-gradient(135deg, #c084fc, #9333ea); color: white; width: 52px; height: 52px; border-radius: 50%; display: flex; justify-content: center; align-items: center; cursor: pointer; margin-top: -15px; box-shadow: 0 6px 20px rgba(168, 85, 247, 0.5); font-size: 28px; font-weight: bold; border: none; }
     </style>
 </head>
 <body>
-    <div class="header">Pazar Yeri</div>
+    <div class="header">
+        <span>Pazar Yeri</span>
+    </div>
 
+    <!-- Üst Tarafta Ürün Arama Yeri -->
+    <div class="search-container">
+        <input type="text" class="search-input" placeholder="Ürün, kategori veya satıcı ara...">
+    </div>
+
+    <!-- Kullanıcı İlanları Listesi -->
     <div class="market-grid">
         <div class="product-card">
-            <div class="product-img">💎</div>
-            <div class="product-name">Özel NFT</div>
-            <div class="product-price">500 DMX</div>
-            <button class="buy-btn">Satın Al</button>
+            <div class="product-img">📦</div>
+            <div class="product-name">Akıllı Saat Pro</div>
+            <div class="product-seller">Satıcı: @serif</div>
+            <div class="product-footer">
+                <div class="product-price">1,250 DMX</div>
+                <button class="buy-btn">İncele</button>
+            </div>
         </div>
         <div class="product-card">
-            <div class="product-img">🚀</div>
-            <div class="product-name">Hızlandırıcı</div>
-            <div class="product-price">150 DMX</div>
-            <button class="buy-btn">Satın Al</button>
+            <div class="product-img">🎧</div>
+            <div class="product-name">Kablosuz Kulaklık</div>
+            <div class="product-seller">Satıcı: @deniz</div>
+            <div class="product-footer">
+                <div class="product-price">750 DMX</div>
+                <button class="buy-btn">İncele</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Alt Tarafta Ürün Sat Butonu -->
+    <div class="bottom-sell-bar">
+        <button class="sell-action-btn" onclick="openSellModal()">+ Ürün Sat</button>
+    </div>
+
+    <!-- Ürün Satma Modalı -->
+    <div class="modal" id="sellModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span>Yeni Ürün İlanı Oluştur</span>
+                <button class="close-modal" onclick="closeSellModal()">&times;</button>
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label">Ürün Fotoğrafları (En Fazla 10 Adet)</label>
+                <div class="photo-upload-box" onclick="alert('Fotoğraf seçme ekranı açılacak (Max 10 adet)')">
+                    📷 Fotoğrafları Seç veya Sürükle (0/10)
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Ürün Adı</label>
+                <input type="text" class="form-input" placeholder="Örn: Kablosuz Kulaklık">
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Ürün Kategorisi</label>
+                <select class="form-select">
+                    <option>Elektronik</option>
+                    <option>Giyim & Moda</option>
+                    <option>Ev & Yaşam</option>
+                    <option>Dijital Varlıklar</option>
+                    <option>Diğer</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Fiyat (DMX)</label>
+                <input type="number" class="form-input" placeholder="0.00">
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Ürün Hakkında Bilgi</label>
+                <textarea class="form-textarea" placeholder="Ürünün durumu, özellikleri vb. detayları yazın..."></textarea>
+            </div>
+
+            <!-- Öne Çıkar Sekmesi -->
+            <div class="boost-section">
+                <div class="boost-info">
+                    <div>Öne Çıkar ✨</div>
+                    <span>İlanınız üst sıralarda listelensin</span>
+                </div>
+                <input type="checkbox" id="boostCheck" style="width: 20px; height: 20px; accent-color: #c084fc; cursor: pointer;">
+            </div>
+            <div style="font-size: 11px; color: #9ca3af; margin-top: -12px; margin-bottom: 20px;">
+                * Öne çıkarma bedeli: <b>10 DMX Jetonu</b>
+            </div>
+
+            <button class="submit-listing-btn" onclick="alert('İlanınız başarıyla yayınlandı!'); closeSellModal();">İlanı Yayınla</button>
         </div>
     </div>
 
@@ -47,9 +153,18 @@
     <div class="bottom-nav">
         <a href="feed.html" class="nav-item">🏠 Akış</a>
         <a href="market.html" class="nav-item active">🛒 Pazar</a>
-        <div class="nav-center-btn">+</div>
+        <button class="nav-center-btn" onclick="window.location.href='feed.html'">+</button>
         <a href="wallet.html" class="nav-item">👛 Cüzdan</a>
         <a href="index.html" class="nav-item">👤 Profil</a>
     </div>
+
+    <script>
+        function openSellModal() {
+            document.getElementById('sellModal').style.display = 'flex';
+        }
+        function closeSellModal() {
+            document.getElementById('sellModal').style.display = 'none';
+        }
+    </script>
 </body>
 </html>
