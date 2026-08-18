@@ -3,36 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DEMVIX - Pazar Yeri</title>
+    <title>DEMVIX - Pazar</title>
     <style>
-        body { background-color: #0f172a; color: white; font-family: Arial, sans-serif; margin: 0; padding: 0; text-align: center; padding-bottom: 80px; }
-        .header { background: #1e293b; padding: 15px; font-size: 18px; font-weight: bold; color: #38bdf8; border-bottom: 1px solid #334155; }
-        .grid { display: flex; flex-direction: column; gap: 15px; padding: 15px; max-width: 400px; margin: 0 auto; }
-        .product-card { background: #1e293b; border-radius: 12px; padding: 15px; text-align: left; box-shadow: 0 4px 6px rgba(0,0,0,0.3); }
-        .product-img { width: 100%; height: 180px; background: #334155; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #94a3b8; margin-bottom: 10px; }
-        .product-title { font-weight: bold; color: #ffffff; font-size: 16px; margin-bottom: 5px; }
-        .product-price { color: #38bdf8; font-weight: bold; font-size: 15px; }
-        .bottom-nav { position: fixed; bottom: 0; left: 0; width: 100%; background: #1e293b; display: flex; justify-content: space-around; padding: 12px 0; border-top: 1px solid #334155; }
-        .nav-item { color: #94a3b8; text-decoration: none; font-size: 14px; font-weight: bold; }
-        .nav-item:hover, .nav-item.active { color: #38bdf8; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { background: linear-gradient(135deg, #0b0713 0%, #150f24 100%); color: #ffffff; font-family: sans-serif; padding-bottom: 100px; min-height: 100vh; }
+        
+        .header { padding: 20px; font-size: 20px; font-weight: 700; border-bottom: 1px solid rgba(168, 85, 247, 0.2); }
+        
+        /* Pazar Kartları */
+        .market-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; padding: 20px; }
+        .product-card { background: rgba(30, 24, 48, 0.6); border: 1px solid rgba(168, 85, 247, 0.2); border-radius: 20px; padding: 15px; text-align: center; }
+        .product-img { width: 100%; height: 120px; background: rgba(255,255,255,0.05); border-radius: 12px; margin-bottom: 10px; display: flex; align-items: center; justify-content: center; font-size: 40px; }
+        .product-name { font-weight: 600; font-size: 14px; margin-bottom: 5px; }
+        .product-price { color: #c084fc; font-weight: 700; font-size: 15px; }
+        .buy-btn { background: #7e22ce; border: none; color: white; padding: 8px 16px; border-radius: 10px; margin-top: 10px; width: 100%; font-weight: 600; cursor: pointer; }
+
+        /* Alt Menü */
+        .bottom-nav { position: fixed; bottom: 0; left: 0; width: 100%; background: rgba(21, 15, 36, 0.95); backdrop-filter: blur(15px); display: flex; justify-content: space-around; align-items: center; padding: 12px 10px; border-top: 1px solid rgba(168, 85, 247, 0.15); z-index: 50; }
+        .nav-item { color: #9ca3af; text-decoration: none; font-size: 12px; display: flex; flex-direction: column; align-items: center; gap: 4px; }
+        .nav-item.active { color: #c084fc; }
+        .nav-center-btn { background: linear-gradient(135deg, #c084fc, #9333ea); color: white; width: 52px; height: 52px; border-radius: 50%; display: flex; justify-content: center; align-items: center; cursor: pointer; margin-top: -15px; box-shadow: 0 6px 20px rgba(168, 85, 247, 0.5); }
     </style>
 </head>
 <body>
-    <div class="header">DEMVIX Pazar Yeri</div>
+    <div class="header">Pazar Yeri</div>
 
-    <div class="grid">
+    <div class="market-grid">
         <div class="product-card">
-            <div class="product-img">Ürün Görseli</div>
-            <div class="product-title">Örnek Ürün / İlan Adı</div>
-            <div class="product-price">1.500 TL</div>
+            <div class="product-img">💎</div>
+            <div class="product-name">Özel NFT</div>
+            <div class="product-price">500 DMX</div>
+            <button class="buy-btn">Satın Al</button>
+        </div>
+        <div class="product-card">
+            <div class="product-img">🚀</div>
+            <div class="product-name">Hızlandırıcı</div>
+            <div class="product-price">150 DMX</div>
+            <button class="buy-btn">Satın Al</button>
         </div>
     </div>
 
+    <!-- Alt Menü -->
     <div class="bottom-nav">
-        <a href="feed.html" class="nav-item">Akış</a>
-        <a href="market.html" class="nav-item active">Pazar</a>
-        <a href="wallet.html" class="nav-item">Cüzdan</a>
-        <a href="index.html" class="nav-item">Profil</a>
+        <a href="feed.html" class="nav-item">🏠 Akış</a>
+        <a href="market.html" class="nav-item active">🛒 Pazar</a>
+        <div class="nav-center-btn">+</div>
+        <a href="wallet.html" class="nav-item">👛 Cüzdan</a>
+        <a href="index.html" class="nav-item">👤 Profil</a>
     </div>
 </body>
 </html>
